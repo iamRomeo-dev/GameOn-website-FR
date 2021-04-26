@@ -17,7 +17,7 @@ body {
   background-image: url("background.png");
   font-family: var(--font-default);
   font-size: 18px;
-  max-width: 1300px;
+  max-width: 1500px;
   margin: 0 auto;
 }
 
@@ -31,6 +31,8 @@ img {
 }
 
 .topnav {
+  display: flex;
+  justify-content: space-between;
   overflow: hidden;
   margin: 3.5%;
 }
@@ -69,6 +71,9 @@ img {
 }
 
 @media screen and (max-width: 768px) {
+  .topnav {
+    display: block;
+  }
   .topnav a {
     display: none;
   }
@@ -232,12 +237,7 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
+
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -449,7 +449,7 @@ input[data-error]::after {
 .hero-text {
   width: 146%;
   font-weight: normal;
-  margin-top: 57px;
+  margin-top: 120px;
   padding: 0;
 }
 .btn-signup {
@@ -459,6 +459,8 @@ input[data-error]::after {
   padding: 15px 23px;
   margin: 0;
   margin-top: 59px;
+  position: absolute;
+bottom: 80px;
 }
 .hero-img {
   grid-column: span 8;
@@ -484,7 +486,7 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1000px) {
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -493,6 +495,7 @@ footer {
     background: #fff;
     color: #000;
     padding: 20px;
+    min-width: 0;
   }
   .hero-content::after {
     content: unset;
@@ -522,6 +525,19 @@ footer {
     text-align: center;
   }
 }
+@media screen and (max-width: 600px) {
+  .hero-headline {
+    font-size: 3.5rem;
+    white-space: normal;
+  }
+  .hero-text {
+    width: unset;
+    font-size: 1rem;
+  }
+  .header-logo img {
+    width: 200px;
+  }
+}
 
 @keyframes modalopen {
   from {
@@ -546,31 +562,18 @@ footer {
 }
 
 .modal-body h2 {
-  margin-top: 50%;
+  margin-top: 60%;
   font-size: 36px;
   text-align: center;
 }
 
-
-#firstNameError {
-  display: none;
-  color: red;
-  font-size: 1rem;
-}
-
-#lastNameError {
-  display: none;
-  color: red;
-  font-size: 1rem;
-}
-
-#emailError {
-  display: none;
-  color: red;
-  font-size: 1rem;
-}
-
-#quantityError {
+#firstNameError,
+#lastNameError,
+#emailError,
+#quantityError,
+#birthdateError,
+#location1Error,
+#checkbox1Error {
   display: none;
   color: red;
   font-size: 1rem;

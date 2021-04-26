@@ -103,6 +103,7 @@
                   id="birthdate"
                   name="birthdate"
                 />
+                <span id="birthdateError">Veuillez entrer une date de naissance au format JJ/MM/AAAA</span>
                 <br class="espacementInput">
               </div>
               <div
@@ -114,7 +115,7 @@
                 id="quantity" 
                 name="quantity" 
                 >
-                <span id="quantityError">Veuillez entrer 2 caractères ou plus</span>
+                <span id="quantityError">Veuillez entrer une valeure numérique</span>
               </div>
               <p class="text-label">Quelles villes ?</p>
               <div
@@ -126,7 +127,7 @@
                   name="location"
                   value="New York"
                   checked
-
+                  required
                 />
                 <label class="checkbox-label" for="location1">
                   <span class="checkbox-icon" 
@@ -202,7 +203,8 @@
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
-                <br>
+                <span id="checkbox1Error">Veuillez devez accepter les conditions d'utilisation</span>
+                <br class="espacementInput">
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
@@ -228,13 +230,14 @@
 
       <div class="msgSuccess" id="msgSuccessId">
         <div class="content">
-          <span class="close"></span>
+          <span class="close" id="crossClose"></span>
           <div class="modal-body">
             <h2>Merci ! Votre réservation a été reçue.</h2>
             <button
             class="btn-submit"
             type="button"
             class="button"
+            id="buttonClose"
           >Close</button>
         </div>       
         </div>
