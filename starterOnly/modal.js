@@ -21,3 +21,7 @@ function launchModal() {
 }
 
 
+ // close modal event
+ document.querySelector(".close").addEventListener("click", () => {
+  modalbg.style.display = "none";
+});
