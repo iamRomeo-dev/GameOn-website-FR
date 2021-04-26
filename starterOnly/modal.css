@@ -563,3 +563,15 @@ footer {
   color: red;
   font-size: 1rem;
 }
+
+#emailError {
+  display: none;
+  color: red;
+  font-size: 1rem;
+}
+
+#quantityError {
+  display: none;
+  color: red;
+  font-size: 1rem;
+}

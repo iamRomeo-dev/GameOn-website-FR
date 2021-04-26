@@ -37,37 +37,58 @@ let form = document.getElementById("form");
 let firstNameInput = document.getElementById("first");
 let lastNameInput = document.getElementById("last");
 
+function validateEmail(email) {
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+}
+
 form.addEventListener("submit", validation);
 
 function validation(e) {
   e.preventDefault();
+  let firstNameInput = document.getElementById("first");
+  let espacementInput = document.querySelectorAll(".espacementInput");
+  let email = document.getElementById("email").value;
+  let quantity = document.getElementById("quantity").value;
+  console.log(quantity.length)
+  //FIRSTNAME
   if (firstNameInput.value.length < 2) {
     let firstNameError = document.getElementById("firstNameError");
     firstNameError.style.display = "block";
 
-    let espacementInput = document.querySelectorAll(".espacementInput");
     espacementInput.forEach((element) => (element.style.display = "none"));
-
-  } else if (lastNameInput.value.length < 2) {
+  } //LASTNAME
+  else if (lastNameInput.value.length < 2) {
     firstNameError.style.display = "none";
 
     let lastNameError = document.getElementById("lastNameError");
     lastNameError.style.display = "block";
 
-    let espacementInput = document.querySelectorAll(".espacementInput");
     espacementInput.forEach((element) => (element.style.display = "none"));
-    
-  } else {
+  } //EMAIL
+  else if (!validateEmail(email)) {
+    lastNameError.style.display = "none";
+
+    let emailError = document.getElementById("emailError");
+    emailError.style.display = "block";
+
+    espacementInput.forEach((element) => (element.style.display = "none"));
+  } //NUMBERS
+  else if (isNaN(quantity) === true || quantity.length == 0) {
+    emailError.style.display = "none";
+
+    let quantityError = document.getElementById("quantityError");
+    quantityError.style.display = "block";
+  } //TRUE
+  else {
     msgSuccess.style.display = "block";
 
     firstNameError.style.display = "none";
     lastNameError.style.display = "none";
+    emailError.style.display = "none";
+    quantityError.style.display = "none";
   }
 }
-
-
-
-
 
 // function validation(e) {
 //   e.preventDefault();

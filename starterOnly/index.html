@@ -66,7 +66,7 @@
                   id="first"
                   name='first'
                  />
-                 <span id="firstNameError">2 caractères minimum</span>
+                 <span id="firstNameError">Veuillez entrer 2 caractères ou plus</span>
                  <br class="espacementInput">
               </div>
               <div
@@ -78,7 +78,7 @@
                   id="last"
                   name="last"
                 />
-                <span id="lastNameError">2 caractères minimum</span>
+                <span id="lastNameError">Veuillez entrer 2 caractères ou plus</span>
                 <br class="espacementInput">
 
               </div>
@@ -90,8 +90,9 @@
                   type="email"
                   id="email"
                   name="email"
-          
-                /><br>
+                />
+                <span id="emailError">Veuillez entrer email valide</span>
+                <br class="espacementInput">
               </div>
               <div
                 class="formData">
@@ -101,22 +102,19 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
-        
-                /><br>
+                />
+                <br class="espacementInput">
               </div>
               <div
                 class="formData">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input 
-                type="number" 
+                type="text" 
                 class="text-control" 
                 id="quantity" 
                 name="quantity" 
-                min="0" 
-                max="99"
-      
                 >
-
+                <span id="quantityError">Veuillez entrer 2 caractères ou plus</span>
               </div>
               <p class="text-label">Quelles villes ?</p>
               <div
@@ -127,7 +125,7 @@
                   id="location1"
                   name="location"
                   value="New York"
-        
+                  checked
 
                 />
                 <label class="checkbox-label" for="location1">
@@ -198,7 +196,7 @@
                   class="checkbox-input"
                   type="checkbox"
                   id="checkbox1"
-         
+                  checked
                 />
                 <label class="checkbox2-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
@@ -232,7 +230,7 @@
         <div class="content">
           <span class="close"></span>
           <div class="modal-body">
-            <h2>Thank you for submitting your registration details</h2>
+            <h2>Merci ! Votre réservation a été reçue.</h2>
             <button
             class="btn-submit"
             type="button"
