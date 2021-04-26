@@ -47,61 +47,73 @@ function validateEmail(email) {
 //FUNCTION OF INPUTS VALIDATION
 function validation(e) {
   e.preventDefault();
-  let firstNameInput = document.getElementById("first");
-  let lastNameInput = document.getElementById("last");
-  let email = document.getElementById("email").value;
-  let date = document.getElementById("birthdate").value;
-  let quantity = document.getElementById("quantity").value;
-  let checkbox1 = document.getElementById("checkbox1");
+
   let espacementInput = document.querySelectorAll(".espacementInput");
+  espacementInput.forEach((element) => (element.style.display = "none"));
 
-  firstNameError.style.display = "none";
   //VALIDATION FIRSTNAME
+  let firstNameInput = document.getElementById("first");
+  let firstNameError = document.getElementById("firstNameError");
   if (firstNameInput.value.length < 2 || isNaN(firstNameInput.value) === false) {
-    let firstNameError = document.getElementById("firstNameError");
     firstNameError.style.display = "block";
-
-    espacementInput.forEach((element) => (element.style.display = "none"));
-  } //VALIDATION LASTNAME
-  else if (lastNameInput.value.length < 2 || isNaN(lastNameInput.value) === false) {
+  } else {
     firstNameError.style.display = "none";
+  }
 
-    let lastNameError = document.getElementById("lastNameError");
+  //VALIDATION LASTNAME
+  let lastNameInput = document.getElementById("last");
+  let lastNameError = document.getElementById("lastNameError");
+  if (lastNameInput.value.length < 2 || isNaN(lastNameInput.value) === false) {
     lastNameError.style.display = "block";
-
-    espacementInput.forEach((element) => (element.style.display = "none"));
-  } //VALIDATION EMAIL
-  else if (!validateEmail(email)) {
+  } else {
     lastNameError.style.display = "none";
+  }
 
-    let emailError = document.getElementById("emailError");
+  //VALIDATION EMAIL
+  let email = document.getElementById("email").value;
+  let emailError = document.getElementById("emailError");
+  if (!validateEmail(email)) {
     emailError.style.display = "block";
-
-    espacementInput.forEach((element) => (element.style.display = "none"));
-  } //VALIDATION BIRTHDATE
-  else if (date === "") {
+  } else {
     emailError.style.display = "none";
+  }
 
-    let birthdateError = document.getElementById("birthdateError");
+  //VALIDATION BIRTHDATE
+  let date = document.getElementById("birthdate").value;
+  let birthdateError = document.getElementById("birthdateError");
+  if (date === "") {
     birthdateError.style.display = "block";
-
-    espacementInput.forEach((element) => (element.style.display = "none"));
-  } //VALIDATION NUMBERS
-  else if (isNaN(quantity) === true || quantity.length == 0) {
+  } else {
     birthdateError.style.display = "none";
+  }
 
-    let quantityError = document.getElementById("quantityError");
+  //VALIDATION NUMBERS
+  let quantity = document.getElementById("quantity").value;
+  let quantityError = document.getElementById("quantityError");
+  if (isNaN(quantity) === true || quantity.length == 0) {
     quantityError.style.display = "block";
-  } //VALIDATION UTILISATION CONDITIONS
-  else if (!checkbox1.checked) {
+  } else {
     quantityError.style.display = "none";
+  }
 
-    let checkbox1Error = document.getElementById("checkbox1Error");
+  //VALIDATION UTILISATION CONDITIONS
+  let checkbox1 = document.getElementById("checkbox1");
+  let checkbox1Error = document.getElementById("checkbox1Error");
+  if (!checkbox1.checked) {
     checkbox1Error.style.display = "block";
-
-    espacementInput.forEach((element) => (element.style.display = "none"));
-  } //TRUE
-  else {
+  } else {
+    checkbox1Error.style.display = "none";
+  } 
+  
+  //TRUE
+  if (
+    checkbox1.checked &&
+    (isNaN(quantity) === false || quantity.length != 0) &&
+    date != "" &&
+    validateEmail(email) &&
+    (lastNameInput.value.length >= 2 || isNaN(lastNameInput.value) === true) &&
+    (firstNameInput.value.length >= 2 || isNaN(firstNameInput.value) === true)
+  ) {
     msgSuccess.style.display = "block";
 
     firstNameError.style.display = "none";
