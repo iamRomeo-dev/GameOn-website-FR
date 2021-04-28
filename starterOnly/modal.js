@@ -54,7 +54,10 @@ function validation(e) {
   //VALIDATION FIRSTNAME
   let firstNameInput = document.getElementById("first");
   let firstNameError = document.getElementById("firstNameError");
-  if (firstNameInput.value.length < 2 || isNaN(firstNameInput.value) === false) {
+  if (
+    firstNameInput.value.length < 2 ||
+    isNaN(firstNameInput.value) === false
+  ) {
     firstNameError.style.display = "block";
   } else {
     firstNameError.style.display = "none";
@@ -88,9 +91,9 @@ function validation(e) {
   }
 
   //VALIDATION NUMBERS
-  let quantity = document.getElementById("quantity").value;
+  let quantity = document.getElementById("quantity");
   let quantityError = document.getElementById("quantityError");
-  if (isNaN(quantity) === true || quantity.length == 0) {
+  if (isNaN(quantity.value) === true || quantity.value === '' || (quantity.value > 99) || (quantity.value < 0)) {
     quantityError.style.display = "block";
   } else {
     quantityError.style.display = "none";
@@ -103,17 +106,18 @@ function validation(e) {
     checkbox1Error.style.display = "block";
   } else {
     checkbox1Error.style.display = "none";
-  } 
-  
-  //TRUE
+  }
+
+  //CONDITION DE VALIDATION DU FORMULAIRE
   if (
     checkbox1.checked &&
-    (isNaN(quantity) === false || quantity.length != 0) &&
+    ((quantity.value) != '' && isNaN(quantity.value) === false && (quantity.value < 99) && (quantity.value > 0)) &&
     date != "" &&
     validateEmail(email) &&
     (lastNameInput.value.length >= 2 || isNaN(lastNameInput.value) === true) &&
     (firstNameInput.value.length >= 2 || isNaN(firstNameInput.value) === true)
   ) {
+    //RESULTAT DE LA VALIDATION
     msgSuccess.style.display = "block";
 
     firstNameError.style.display = "none";
