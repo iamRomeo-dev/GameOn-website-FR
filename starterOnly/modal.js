@@ -51,12 +51,14 @@ function validation(e) {
   let espacementInput = document.querySelectorAll(".espacementInput");
   espacementInput.forEach((element) => (element.style.display = "none"));
 
+  const validString = /^[a-zA-Z]+(?:(?:|['_\. ])([a-zA-Z]*(\.\s)?[a-zA-Z])+)*$/;
+
   //VALIDATION FIRSTNAME
   let firstNameInput = document.getElementById("first");
   let firstNameError = document.getElementById("firstNameError");
   if (
     firstNameInput.value.length < 2 ||
-    isNaN(firstNameInput.value) === false
+    !validString.test(firstNameInput.value)
   ) {
     firstNameError.style.display = "block";
   } else {
@@ -66,7 +68,10 @@ function validation(e) {
   //VALIDATION LASTNAME
   let lastNameInput = document.getElementById("last");
   let lastNameError = document.getElementById("lastNameError");
-  if (lastNameInput.value.length < 2 || isNaN(lastNameInput.value) === false) {
+  if (
+    lastNameInput.value.length < 2 ||
+    !validString.test(lastNameInput.value)
+  ) {
     lastNameError.style.display = "block";
   } else {
     lastNameError.style.display = "none";
@@ -93,7 +98,7 @@ function validation(e) {
   //VALIDATION NUMBERS
   let quantity = document.getElementById("quantity");
   let quantityError = document.getElementById("quantityError");
-  if (isNaN(quantity.value) === true || quantity.value === '' || (quantity.value > 99) || (quantity.value < 0)) {
+  if (isNaN(quantity.value) === true || quantity.value === "") {
     quantityError.style.display = "block";
   } else {
     quantityError.style.display = "none";
@@ -111,11 +116,14 @@ function validation(e) {
   //CONDITION DE VALIDATION DU FORMULAIRE
   if (
     checkbox1.checked &&
-    ((quantity.value) != '' && isNaN(quantity.value) === false && (quantity.value < 99) && (quantity.value > 0)) &&
+    quantity.value != "" &&
+    isNaN(quantity.value) === false &&
     date != "" &&
     validateEmail(email) &&
-    (lastNameInput.value.length >= 2 || isNaN(lastNameInput.value) === true) &&
-    (firstNameInput.value.length >= 2 || isNaN(firstNameInput.value) === true)
+    lastNameInput.value.length >= 2 &&
+    validString.test(lastNameInput.value) &&
+    firstNameInput.value.length >= 2 &&
+    validString.test(firstNameInput.value)
   ) {
     //RESULTAT DE LA VALIDATION
     msgSuccess.style.display = "block";
